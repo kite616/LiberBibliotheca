@@ -1,0 +1,92 @@
+[example-files\[Rheinwerk] Blender 3 - Das umfassende Handbuch (978-3-8362-7156-1).pdf, example-files\[Rheinwerk] Daily Play - Agile Spiele für Coaches und Scrum Master (978-3-8362-7887-4).pdf, example-files\[Rheinwerk] Fit fürs Studium - Mathematik - Für alle MINT-Fächer (78-3-8362-7060-1).pdf, example-files\[Rheinwerk] IT-Projektmanagement - Was wirklich funktioniert und was nicht (978-3-8362-4098-7).pdf, example-files\[Rheinwerk] Java ist auch eine Insel - Einführung, Ausbildung, Praxis (978-3-8362-7737-2).pdf, example-files\[Springer] Numerische Physik, Wiedemann, 1.2004 (354040774X).pdf, example-files\[Springer] Rechneraufbau und Rechnerarchitektur, Böttcher, 1.2006.pdf, example-files\[Springer] Softwareentwicklung kompakt und verständlich (2. Auflage, 2015).pdf, example-files\[Vieweg] Mikroprozessortechnik, Wüst, 2.2006.pdf]
+
+[Rheinwerk] Blender 3 - Das umfassende Handbuch (978-3-8362-7156-1).pdf
+Found ISBN on page 4: 978-3-8362-7157-8
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7157-8
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/qHt0zwEACAAJ - Titel: Blender 3 - Subtitel: Das umfassende Handbuch
+
+Found ISBN on page 4: 978-3-8362-7159-2
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7159-2
+Found Items: 0
+kind: books#volumes - totalItems: 0
+
+
+[Rheinwerk] Daily Play - Agile Spiele für Coaches und Scrum Master (978-3-8362-7887-4).pdf
+Found ISBN on page 4: 978-3-8362-7888-1
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7888-1
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/tUJ2zwEACAAJ - Titel: Daily Play - Subtitel: Agile Spiele für Coaches und Scrum Master
+
+Found ISBN on page 4: 978-3-8362-7890-4
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7890-4
+Found Items: 0
+kind: books#volumes - totalItems: 0
+
+
+[Rheinwerk] Fit fürs Studium - Mathematik - Für alle MINT-Fächer (78-3-8362-7060-1).pdf
+Found ISBN on page 4: 978-3-8362-7061-8
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7061-8
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/WyugzQEACAAJ - Titel: Fit fürs Studium - Mathematik - Subtitel: Für alle MINT-Fächer
+
+Found ISBN on page 4: 978-3-8362-7063-2
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7063-2
+Found Items: 0
+kind: books#volumes - totalItems: 0
+
+
+[Rheinwerk] IT-Projektmanagement - Was wirklich funktioniert und was nicht (978-3-8362-4098-7).pdf
+Found ISBN on page 4: 978-3-8362-4098-7
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-4098-7
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/H9ARvgAACAAJ - Titel: IT-Projektmanagement - Subtitel: Was wirklich funktioniert - und was nicht
+
+Found ISBN on page 4: 978-3-8362-4099-4
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-4099-4
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/71yRAQAACAAJ - Titel: IT-Projektmanagement - Subtitel: Was wirklich funktioniert - und was nicht
+
+
+[Rheinwerk] Java ist auch eine Insel - Einführung, Ausbildung, Praxis (978-3-8362-7737-2).pdf
+Found ISBN on page 4: 978-3-8362-7746-4
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7746-4
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/Ixb_zQEACAAJ - Titel: Java ist auch eine Insel - Subtitel: Einführung, Ausbildung, Praxis
+
+Found ISBN on page 4: 978-3-8362-7739-6
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8362-7739-6
+Found Items: 0
+kind: books#volumes - totalItems: 0
+
+
+[Springer] Numerische Physik, Wiedemann, 1.2004 (354040774X).pdf
+
+[Springer] Rechneraufbau und Rechnerarchitektur, Böttcher, 1.2006.pdf
+Found ISBN on page 5: 978-3-540-20979-9
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-540-20979-9
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/Mwk_462WZBUC - Titel: Rechneraufbau und Rechnerarchitektur - Subtitel: null
+
+
+[Springer] Softwareentwicklung kompakt und verständlich (2. Auflage, 2015).pdf
+Found ISBN on page 4: 978-3-658-10875-5
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-658-10875-5
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/AWIIjwEACAAJ - Titel: Softwareentwicklung kompakt und verständlich - Subtitel: Wie Softwaresysteme entstehen
+
+Found ISBN on page 4: 978-3-658-10876-2
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-658-10876-2
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/yvtSCwAAQBAJ - Titel: Softwareentwicklung kompakt und verständlich - Subtitel: Wie Softwaresysteme entstehen
+
+Found ISBN on page 4: 978-3-658-10876-2
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-658-10876-2
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/yvtSCwAAQBAJ - Titel: Softwareentwicklung kompakt und verständlich - Subtitel: Wie Softwaresysteme entstehen
+
+[Vieweg] Mikroprozessortechnik, Wüst, 2.2006.pdf
+Found ISBN on page 5: 978-3-8348-0046-6
+Pulling data from Google: https://www.googleapis.com/books/v1/volumes?q=isbn:978-3-8348-0046-6
+Found Items: 1
+kind: books#volumes - totalItems: 1 - Link: https://www.googleapis.com/books/v1/volumes/ngP8bvgisdAC - Titel: Mikroprozessortechnik - Subtitel: Grundlagen, Architekturen und Programmierung von Mikroprozessoren, Mikrocontrollern und Signalprozessoren ; mit 59 Tabellen
