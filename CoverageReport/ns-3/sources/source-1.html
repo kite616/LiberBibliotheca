@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LiberBibliothecaTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">in.munzinger.liberbibliotheca.test</a>
+</div>
+
+<h1>Coverage Summary for Class: LiberBibliothecaTest (in.munzinger.liberbibliotheca.test)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LiberBibliothecaTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package in.munzinger.liberbibliotheca.test;
+&nbsp;
+&nbsp;import in.munzinger.liberbibliotheca.LiberBibliotheca;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.util.Arrays;
+&nbsp;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertEquals;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertThrows;
+&nbsp;import static org.mockito.Mockito.mock;
+&nbsp;import static org.mockito.Mockito.when;
+&nbsp;
+<b class="fc">&nbsp;class LiberBibliothecaTest {</b>
+<b class="fc">&nbsp;    LiberBibliotheca bib = new LiberBibliotheca();</b>
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void getFiles() {
+<b class="fc">&nbsp;        assertEquals(&quot;[test-files\\empty.pdf, test-files\\malformed.pdf, test-files\\[Rheinwerk] Blender 3 - Das umfassende Handbuch (978-3-8362-7156-1).pdf, test-files\\[Rheinwerk] Daily Play - Agile Spiele für Coaches und Scrum Master (978-3-8362-7887-4).pdf]&quot;, Arrays.toString(bib.getFiles(&quot;test-files&quot;)));</b>
+&nbsp;
+&nbsp;        // Mock setup
+<b class="fc">&nbsp;        File[] mockfiles = new File[1];</b>
+<b class="fc">&nbsp;        mockfiles[0] = new File(&quot;mock-files\\mock.pdf&quot;);</b>
+<b class="fc">&nbsp;        LiberBibliotheca mockbib = mock(LiberBibliotheca.class);</b>
+<b class="fc">&nbsp;        when(mockbib.getFiles(&quot;mock&quot;)).thenReturn(mockfiles);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(&quot;[mock-files\\mock.pdf]&quot;, Arrays.toString(mockbib.getFiles(&quot;mock&quot;)));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void getInformationFromGoogle() {
+<b class="fc">&nbsp;        assertEquals(&quot;Blender 3&quot;, bib.getInformationFromGoogle(&quot;978-3-8362-7157-8&quot;).items.get(0).volumeInfo.title);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Das umfassende Handbuch&quot;, bib.getInformationFromGoogle(&quot;978-3-8362-7157-8&quot;).items.get(0).volumeInfo.subtitle);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(0, bib.getInformationFromGoogle(&quot;978-3-8362-7157-A&quot;).totalItems);</b>
+<b class="fc">&nbsp;        assertEquals(0, bib.getInformationFromGoogle(&quot;978-3-83622-7157-8&quot;).totalItems);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void getDocument() {
+<b class="fc">&nbsp;        assertThrows(FileNotFoundException.class, () -&gt; bib.getDocument(&quot;void.pdf&quot;));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-07-02 23:28</div>
+</div>
+</body>
+</html>

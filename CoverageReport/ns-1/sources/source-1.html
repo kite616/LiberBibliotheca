@@ -1,0 +1,251 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LiberBibliotheca</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">in.munzinger.liberbibliotheca</a>
+</div>
+
+<h1>Coverage Summary for Class: LiberBibliotheca (in.munzinger.liberbibliotheca)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LiberBibliotheca</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    36,7%
+  </span>
+  <span class="absValue">
+    (18/49)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package in.munzinger.liberbibliotheca;
+&nbsp;
+&nbsp;import com.google.gson.Gson;
+&nbsp;import in.munzinger.liberbibliotheca.book.Book;
+&nbsp;import org.apache.pdfbox.Loader;
+&nbsp;import org.apache.pdfbox.pdmodel.PDDocument;
+&nbsp;import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
+&nbsp;import org.apache.pdfbox.text.PDFTextStripper;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.io.IOException;
+&nbsp;import java.io.InputStreamReader;
+&nbsp;import java.net.URI;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.regex.Matcher;
+&nbsp;import java.util.regex.Pattern;
+&nbsp;
+&nbsp;/**
+&nbsp; * Minimal proof-of-concept for text extraction and
+&nbsp; * information gathering using Googles Book API
+&nbsp; *
+&nbsp; * @author Maximilian Munzinger
+&nbsp; */
+&nbsp;public class LiberBibliotheca {
+<b class="fc">&nbsp;    public LiberBibliotheca() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param path Path to books, format of files must be pdf
+&nbsp;     * @return returns all found files
+&nbsp;     */
+&nbsp;    public File[] getFiles(String path) {
+<b class="fc">&nbsp;        File dir = new File(path);</b>
+<b class="fc">&nbsp;        System.out.println(Arrays.toString(dir.listFiles((dir1, name) -&gt; name.toLowerCase().endsWith(&quot;.pdf&quot;))));</b>
+<b class="fc">&nbsp;        return dir.listFiles((dir1, name) -&gt; name.toLowerCase().endsWith(&quot;.pdf&quot;));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param file single pdf file
+&nbsp;     * @return PDDocument for further parsing operations
+&nbsp;     */
+&nbsp;    public PDDocument getDocument(String file) throws FileNotFoundException {
+&nbsp;        try {
+<b class="fc">&nbsp;            PDDocument document = Loader.loadPDF(new File(file));</b>
+<b class="nc">&nbsp;            AccessPermission ap = document.getCurrentAccessPermission();</b>
+<b class="nc">&nbsp;            if (!ap.canExtractContent()) {</b>
+<b class="nc">&nbsp;                throw new IOException(&quot;Missing Permission: Text extraction failed.&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            return document;</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+&nbsp;        }
+<b class="fc">&nbsp;        throw new FileNotFoundException(&quot;Specified file not found.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param doc name of document
+&nbsp;     * @throws IOException primary error source are inaccessible files
+&nbsp;     */
+&nbsp;    public void getIsbnFromDocument(String doc) throws IOException {
+<b class="nc">&nbsp;        PDDocument document = getDocument(doc);</b>
+<b class="nc">&nbsp;        PDFTextStripper stripper = new PDFTextStripper();</b>
+&nbsp;
+&nbsp;        // This example uses sorting, but in some cases it is more useful to switch it off,
+&nbsp;        // e.g. in some files with columns where the PDF content stream respects the
+&nbsp;        // column order.
+<b class="nc">&nbsp;        stripper.setSortByPosition(true);</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int p = 1; p &lt;= 8; ++p) {</b>
+&nbsp;            // Extract current page
+<b class="nc">&nbsp;            stripper.setStartPage(p);</b>
+<b class="nc">&nbsp;            stripper.setEndPage(p);</b>
+&nbsp;
+&nbsp;            // Extract text
+<b class="nc">&nbsp;            String text = stripper.getText(document);</b>
+&nbsp;
+&nbsp;            // Search for ISBN-like Numbers
+<b class="nc">&nbsp;            Pattern pattern = Pattern.compile(&quot;(\\d-?){13}&quot;);</b>
+<b class="nc">&nbsp;            Matcher matcher = pattern.matcher(text.trim());</b>
+&nbsp;
+<b class="nc">&nbsp;            while (matcher.find()) {</b>
+<b class="nc">&nbsp;                String pageStr = String.format(&quot;Found ISBN on page %d: &quot;, p);</b>
+<b class="nc">&nbsp;                System.out.print(pageStr);</b>
+<b class="nc">&nbsp;                System.out.println(matcher.group());</b>
+<b class="nc">&nbsp;                System.out.println(getInformationFromGoogle(matcher.group()).toString());</b>
+<b class="nc">&nbsp;                System.out.println();</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * @param isbn Format has to be ISBN-13
+&nbsp;     * @return Book-Object
+&nbsp;     */
+&nbsp;    public Book getInformationFromGoogle(String isbn) {
+<b class="fc">&nbsp;        Book book = null;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            System.out.print(&quot;Pulling data from Google: &quot;);</b>
+&nbsp;            // Connect to the URL using java&#39;s native library
+<b class="fc">&nbsp;            URL url = new URI(&quot;https://www.googleapis.com/books/v1/volumes?q=isbn:&quot; + isbn).toURL();</b>
+<b class="fc">&nbsp;            System.out.println(url);</b>
+&nbsp;
+<b class="fc">&nbsp;            InputStreamReader reader = new InputStreamReader(url.openStream());</b>
+<b class="fc">&nbsp;            Gson gson = new Gson();</b>
+<b class="fc">&nbsp;            book = gson.fromJson(reader, Book.class);</b>
+&nbsp;
+<b class="fc">&nbsp;            System.out.println(&quot;Found Items: &quot; + book.totalItems);</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return book;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Read in files from given directory, extract ISBN,
+&nbsp;     * lookup information for ISBN using Googles Book API,
+&nbsp;     * print title and subtitle of book
+&nbsp;     *
+&nbsp;     * @param args Only valid argument is a directory
+&nbsp;     */
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        LiberBibliotheca bibliotheca = new LiberBibliotheca();</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            File[] files = bibliotheca.getFiles(args[0]);</b>
+<b class="nc">&nbsp;            for (File file : files) {</b>
+<b class="nc">&nbsp;                System.out.println(file.getName());</b>
+<b class="nc">&nbsp;                bibliotheca.getIsbnFromDocument(file.getAbsolutePath());</b>
+<b class="nc">&nbsp;                System.out.println();</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(e.getLocalizedMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-07-02 23:28</div>
+</div>
+</body>
+</html>
